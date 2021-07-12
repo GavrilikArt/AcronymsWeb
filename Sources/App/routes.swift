@@ -1,14 +1,16 @@
 import Fluent
 import Vapor
+import Leaf
 
 func routes(_ app: Application) throws {
-    app.get { req in
-        return "It works!"
-    }
 
-    app.get("hello") { req -> String in
-        return "Hello, world!"
-    }
-
-    try app.register(collection: TodoController())
+  let acronymsController = AcronymsController()
+  let usersController = UsersController()
+  let categoriesController = CategoriesController()
+  let websiteController = WebsiteController()
+  
+  try app.register(collection: acronymsController)
+  try app.register(collection: usersController)
+  try app.register(collection: categoriesController)
+  try app.register(collection: websiteController)
 }
